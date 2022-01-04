@@ -1,28 +1,23 @@
 import React from 'react'
-import { Form, FormGroup, FormInput } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 
+import EntryForm from './EntryForm';
 import ButtonSaveOrCancel from './ButtonSaveOrCancel';
 
-function NewEntryForm() {
+function NewEntryForm( { addEntry, description, setDescription, value, setValue, isExpense, setIsExpense } ) {
+
     return (
-        <Form>
-            <FormGroup>
-            <FormInput 
-                placeholder='New shinny thing'
-                icon='tags'
-                width={12}
-                label='Description'>
-            </FormInput>
-            <FormInput 
-                placeholder='100.00'
-                icon='dollar'
-                iconPosition='left'
-                width={4}
-                label='Value'>
-            </FormInput>
-            </FormGroup>
-            <ButtonSaveOrCancel/>
-      </Form>
+        <Container>
+            <EntryForm 
+                description={description} 
+                setDescription={setDescription}
+                value={value} 
+                setValue={setValue}
+                isExpense={isExpense}
+                setIsExpense={setIsExpense}
+            />
+            <ButtonSaveOrCancel addEntry={addEntry}/>
+        </Container>
     )
 }
 

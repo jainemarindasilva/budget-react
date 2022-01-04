@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Grid, GridColumn, GridRow, Icon, Segment } from 'semantic-ui-react'
 
-function EntryLine( {title, value, isExpense=false} ) {
+function EntryLine( { id, description, value, isExpense = false, deleteEntry, editEntry } ) {
+
     return (
-        <Segment textAlign='right' color={isExpense ? 'red' : 'green'}>
-            <Grid columns={3}>
-                <GridRow>
-                    <GridColumn width={10} textAlign='left'>
-                        {title}
-                    </GridColumn>
-                    <GridColumn width={3} textAlign='right'>
-                        {value}
-                    </GridColumn>
-                    <GridColumn width={3}>
-                        <Icon name='edit' bordered/>
-                        <Icon name='trash' bordered/>
-                    </GridColumn>
-                </GridRow>
-            </Grid>
-        </Segment>
+        <Fragment>
+            <Segment textAlign='right' color={isExpense ? 'red' : 'green'}>
+                <Grid columns={3}>
+                    <GridRow>
+                        <GridColumn width={10} textAlign='left'>
+                            {description}
+                        </GridColumn>
+                        <GridColumn width={3} textAlign='right'>
+                            {value}
+                        </GridColumn>
+                        <GridColumn width={3}>
+                            <Icon name='edit' bordered onClick={() => editEntry(id)}/>
+                            <Icon name='trash' bordered onClick={() => deleteEntry(id)}/>
+                        </GridColumn>
+                    </GridRow>
+                </Grid>
+            </Segment>
+        </Fragment>
     )
 }
 
